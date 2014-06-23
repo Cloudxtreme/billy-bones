@@ -6,6 +6,8 @@ gem 'data_mapper', '~> 1.2.0'
 
 group :development do
   gem 'pry'
+  gem 'rubocop'
+  gem 'ruby-lint'
 end
 
 group :test do
