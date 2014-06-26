@@ -7,7 +7,7 @@ task :testenv do
   ENV['RACK_ENV'] = 'test'
 end
 
-Rake::TestTask.new('test') => :testenv do |t|
+Rake::TestTask.new('test' => :testenv) do |t|
   t.libs = [lib_dir, test_dir]
   t.pattern = 'test/**/test_*.rb'
   t.warning = true
