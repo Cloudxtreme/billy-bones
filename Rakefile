@@ -10,7 +10,7 @@ end
 Rake::TestTask.new('test' => :testenv) do |t|
   t.libs = [lib_dir, test_dir]
   t.pattern = 'test/**/test_*.rb'
-  t.warning = true
+  #t.warning = true
 end
 
 desc "Run app"

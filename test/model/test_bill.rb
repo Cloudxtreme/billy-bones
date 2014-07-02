@@ -6,7 +6,7 @@ require 'dm-migrations'
 
 DataMapper.auto_migrate!
 
-class TestBill < MiniTest::Unit::TestCase
+class TestBill < MiniTest::Test
 
   def test_save_valid_bill
     b = Bill.new(value: nil, cost: 100.0)
