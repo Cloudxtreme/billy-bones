@@ -1,15 +1,14 @@
-require 'dm_test'
-require 'minitest/autorun'
-
-require 'model/bill.rb'
-require 'dm-migrations'
-
-DataMapper.auto_migrate!
+require 'model/bill'
+require 'model_helper'
 
 class TestBill < MiniTest::Test
 
-  def test_save_valid_bill
+  def test_that_valid_bill_will_be_saved
     b = Bill.new(value: nil, cost: 100.0)
+    assert b.valid?
+    assert b.save
+    b.value = 10500
+    assert b.valid?
     assert b.save
   end
 
