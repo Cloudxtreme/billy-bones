@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# Put launch code here
+$LOAD_PATH << 'lib'
+require 'sinatra'
+
+require 'model/bill'
+require 'model/dm_setup'
+
+get '/' do
+  @bills = Bill.all
+  erb :bills
+end

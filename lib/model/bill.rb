@@ -4,8 +4,9 @@ class Bill
   include DataMapper::Resource
 
   property :id, Serial
-  property :value, Float
+  property :meter, Float
   property :cost, Float
+  property :date_paid, Date
 
 end
 

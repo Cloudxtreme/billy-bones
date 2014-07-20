@@ -1,0 +1,15 @@
+<h1>Hello world!</h1>
+<table style="border: 1px solid">
+  <tr>
+    <th>Дата оплаты</th>
+    <th>Значение счётчика</th>
+    <th>Стоимость</th>
+  </tr>
+  <% @bills.each do |b| %>
+  <tr>
+    <td><%= b.date_paid %></td>
+    <td><%= b.meter %></td>
+    <td><%= b.cost %></td>
+  </tr>
+  <% end %>
+</table>
