@@ -8,5 +8,5 @@ require 'model/dm_setup'
 
 get '/' do
   @bills = Bill.all
-  erb :bills
+  haml :bills
 end

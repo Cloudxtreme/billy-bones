@@ -1,0 +1,11 @@
+%h1 Hello world!
+%table{style: 'border: 1px solid'}
+  %tr
+    %th Дата оплаты
+    %th Значение счётчика
+    %th Стоимость
+  - @bills.each do |b|
+    %tr
+      %td= b.date_paid
+      %td= b.meter
+      %td= b.cost

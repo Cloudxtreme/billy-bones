@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'sinatra', '~> 1.4.5'
 gem 'dm-postgres-adapter', '~> 1.2.0'
 gem 'data_mapper', '~> 1.2.0'
+gem 'haml', '~> 4.0.5'
 
 group :development do
   gem 'pry'
