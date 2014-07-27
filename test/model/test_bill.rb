@@ -1,15 +1,18 @@
+require 'minitest/autorun'
 require 'model/bill'
-require 'model_helper'
+require 'model/category'
 
 class TestBill < MiniTest::Test
 
-  def test_that_valid_bill_will_be_saved
-    b = Bill.new(meter: nil, cost: 100.0, date_paid: Time.now)
-    assert b.valid?
-    assert b.save
-    b.meter = 10500
-    assert b.valid?
-    assert b.save
+  def test_referential_bill
+    cat = Category.new(name: 'TestCat', type: :referential)
+    cat.save
+    bill = ReferentialBill.new()
+    refute bill.valid?
+    bill.meter = 100.0
+    bill.category = cat
+    assert bill.valid?
+    assert bill.save
   end
 
 end

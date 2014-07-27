@@ -1,6 +1,5 @@
 #encoding: utf-8
 require 'data_mapper'
-require 'model/category'
 
 class Bill
   include DataMapper::Resource
@@ -47,8 +46,3 @@ class ComputableBill < ReferentialBill
     property :modificators, Json, default: '[]'
 end
 
-
-Bill.finalize
-ReferentialBill.finalize
-PredefinedBill.finalize
-ComputableBill.finalize
