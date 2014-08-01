@@ -6,6 +6,12 @@ require 'sinatra' # Has to be here for traditional approach
 require 'config'
 
 get '/' do
-  @bills = Bill.all
+  # Doesn't load additional attributes otherwise
+  @bills = Bill.all.to_a.map{|e| e.to_hash}
   haml :bills
+end
+
+get '/category/:id' do |cat_id|
+  @category = Category.get(cat_id)
+  haml :category
 end

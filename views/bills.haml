@@ -1,11 +1,15 @@
-%h1 Hello world!
 %table{style: 'border: 1px solid'}
   %tr
+    %th Дата замера
     %th Дата оплаты
     %th Значение счётчика
     %th Стоимость
+    %th Категория
   - @bills.each do |b|
     %tr
-      %td= b.date_paid
-      %td= b.meter
-      %td= b.cost
+      %td= b[ :measure_day ]
+      %td= b[ :pay_date ]
+      %td= b[ :meter ]
+      %td= b[ :cost ]
+      %td
+        %a{href: "/category/#{ b[:category_id]}"}= b[:category]

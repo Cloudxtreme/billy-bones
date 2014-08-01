@@ -1,0 +1,4 @@
+%h3= @category.name
+#type= @category.cat_type
+-# Rendering the bills
+= haml @category.class.bill_template(:index).to_sym
