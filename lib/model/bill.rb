@@ -4,15 +4,18 @@ require 'data_mapper'
 class Bill
   include DataMapper::Resource
 
-  def template
-    # Name of template that should be used to render the object
-    nil
-  end
-
   property :id, Serial
-  property :type, Discriminator
+  property :meter, Float
+  property :cost, Float
+  property :measure_date, Date
+  property :pay_date, Date
 
   belongs_to :category
+  has 1, :type, through: :category
+
+  validates_with_block do
+    type.required_fields.all?{|f| not self.send(f).nil?}
+  end
 
   def to_hash
     # Returns a hash containing all attributes
@@ -22,45 +25,4 @@ class Bill
     attrs
   end
 
-end
-
-class ReferentialBill < Bill
-  # Referential bills only list the amount of resource (e.g. water,
-  # electricity and such) consumed.
-  property :meter, Float
-  property :measure_date, Date
-  validates_presence_of :meter, :measure_date
-
-  def template
-    :referential_bill
-  end
-
-end
-
-class PredefinedBill < Bill
-  # Predefined bills have a cost that doesn't depend on the amount of
-  # resource consumed
-  property :cost, Float
-  property :pay_date, Date
-  validates_presence_of :cost, :pay_date
-
-  def template
-    :predefined_bill
-  end
-end
-
-class ComputableBill < Bill
-  # Computable bills have a cost that depends on the amount of resource
-  # consumed and a tariff. The cost should not be set manually,
-  # but computed using the tariff, the meter value and the category's
-  # modificators (if any).
-  #belongs_to :tariff TODO uncomment when tariff ready
-  property :cost, Float, writer: :private
-  property :pay_date, Date
-  property :measure_date, Date
-  validates_presence_of :pay_date
-
-  def template
-    :computable_bill
-  end
 end

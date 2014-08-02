@@ -2,8 +2,10 @@
 
 require 'sinatra'
 require 'data_mapper'
+require 'model/type'
 require 'model/bill'
 require 'model/category'
+require 'model/tariff'
 configure :production do
   DataMapper::Logger.new('db-log', :debug)
   DataMapper.setup(:default,
@@ -27,5 +29,3 @@ configure :test do
   DataMapper.finalize
   DataMapper.auto_migrate!
 end
-
-
