@@ -1,8 +1,0 @@
-%table
-	%tr
-		%th Дата оплаты
-		%th Стоимость
-	- @category.bills.each do |b|
-		%tr
-			%td= b.pay_date
-			%td= b.cost

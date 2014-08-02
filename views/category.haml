@@ -1,4 +1,11 @@
 %h3= @category.name
 #type= @category.type.name
 -# Rendering the bills
-= haml @category.bill_template(:index).to_sym
+%table
+	%tr
+		- @fields.each do |f|
+			%th= f
+	- @category.bills.each do |bill|
+		%tr
+			- @fields.each do |f|
+				%td= bill.send(f)

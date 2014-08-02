@@ -7,11 +7,13 @@ require 'config'
 
 get '/' do
   # Doesn't load additional attributes otherwise
-  @bills = Bill.all.to_a.map{|e| e.to_hash}
+  @bills = Bill.all(order: [:date.desc]).to_a.map{|e| e.to_hash}
   haml :bills
 end
 
 get '/category/:id' do |cat_id|
   @category = Category.get(cat_id)
+  cat_type = @category.type
+  @fields = cat_type.required_fields + cat_type.computations.keys
   haml :category
 end

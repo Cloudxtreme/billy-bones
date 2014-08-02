@@ -1,8 +1,0 @@
-%table
-  %tr
-    %th Дата замера
-    %th Показание счётчика
-  - @category.bills.each do |b|
-    %tr
-      %td= b.measure_date
-      %td= b.meter
