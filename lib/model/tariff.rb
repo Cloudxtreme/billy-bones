@@ -5,7 +5,7 @@ class Tariff
 
   property :id, Serial
   property :approval_date, Date, required: true
-  property :cost, Float, required: true
+  property :price, Float, required: true
 
   belongs_to :category
 
