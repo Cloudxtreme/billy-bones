@@ -7,14 +7,19 @@ class Bill
   property :id, Serial
   property :meter, Float
   property :cost, Float
-  property :measure_date, Date
-  property :pay_date, Date
+  property :date, Date
 
   belongs_to :category
-  has 1, :type, through: :category
 
   validates_with_block do
-    type.required_fields.all?{|f| not self.send(f).nil?}
+    category.type.required_fields.all?{|f| not self.send(f).nil?}
+  end
+
+  before :save do
+    category.type.computations.each do |name, code|
+      attribute_set(name.to_sym, eval(code))
+    end
+    true
   end
 
   def to_hash
