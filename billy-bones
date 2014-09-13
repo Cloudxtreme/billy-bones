@@ -13,7 +13,15 @@ end
 
 get '/category/:id' do |cat_id|
   @category = Category.get(cat_id)
-  cat_type = @category.type
-  @fields = cat_type.required_fields + cat_type.computations.keys
-  haml :category
+  @bills = @category.bills
+  haml :category_show do
+    haml :bills
+  end
+end
+
+get '/category/:id/edit' do |cat_id|
+  @category = Category.get(cat_id)
+  haml :category_edit do
+    haml :_category_form
+  end
 end

@@ -8,6 +8,7 @@ class Bill
   property :meter, Float
   property :cost, Float
   property :date, Date
+  property :period, Date
 
   belongs_to :category
 
