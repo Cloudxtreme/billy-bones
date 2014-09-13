@@ -1,0 +1,21 @@
+%form{action: url("/category/#@action"), method: 'POST'}
+  .control
+    .label
+      %label{for: 'name'} Category name
+    .input
+      %input#name{type: 'text', name: 'name', value: @category.name}/
+
+  .control
+    .label
+      %label{for: 'init_meter'} Initial meter
+    .input
+      %input#init_meter{type: 'number', name: 'init_meter', step: 'any', min: 0, value: @category.init_meter}/
+
+  .control
+    .label
+      %label{for: 'description'}Description
+    .input
+      %textarea#description{name: 'description'}= @category.description
+
+  .control.input
+    %input#submit{type: 'submit'}

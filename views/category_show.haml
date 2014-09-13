@@ -2,3 +2,4 @@
 %p= @category.description
 -# Rendering the bills
 = yield
+%a{href: url("/category/#{@category.id}/edit")} Edit

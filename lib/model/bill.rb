@@ -12,11 +12,4 @@ class Bill
 
   belongs_to :category
 
-  before :save do
-    category.type.computations.each do |name, code|
-      attribute_set(name.to_sym, eval(code))
-    end
-    true
-  end
-
 end
