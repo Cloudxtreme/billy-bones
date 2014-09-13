@@ -11,23 +11,11 @@ class Bill
 
   belongs_to :category
 
-  validates_with_block do
-    category.type.required_fields.all?{|f| not self.send(f).nil?}
-  end
-
   before :save do
     category.type.computations.each do |name, code|
       attribute_set(name.to_sym, eval(code))
     end
     true
-  end
-
-  def to_hash
-    # Returns a hash containing all attributes
-    # for view representation
-    attrs = attributes
-    attrs[:category] = category.name
-    attrs
   end
 
 end

@@ -7,7 +7,7 @@ require 'config'
 
 get '/' do
   # Doesn't load additional attributes otherwise
-  @bills = Bill.all(order: [:date.desc]).to_a.map{|e| e.to_hash}
+  @bills = Bill.all(order: [:date.desc])
   haml :bills
 end
 

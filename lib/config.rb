@@ -2,7 +2,6 @@
 
 require 'sinatra'
 require 'data_mapper'
-require 'model/type'
 require 'model/bill'
 require 'model/category'
 require 'model/tariff'

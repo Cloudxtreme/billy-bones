@@ -13,5 +13,7 @@ group :development do
 end
 
 group :test do
-  gem 'minitest', '~> 5.3.5'
+  gem 'rspec'
+  gem 'factory_girl'
+  gem 'faker'
 end

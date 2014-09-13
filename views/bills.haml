@@ -6,8 +6,8 @@
     %th Категория
   - @bills.each do |b|
     %tr
-      %td= b[ :date ]
-      %td= b[ :meter ]
-      %td= b[ :cost ]
+      %td= b.date
+      %td= b.meter
+      %td= b.cost
       %td
-        %a{href: "/category/#{ b[:category_id]}"}= b[:category]
+        %a{href: "/category/#{ b.category_id }"}= b.category.name
