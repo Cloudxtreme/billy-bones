@@ -1,0 +1,33 @@
+%form{action: url("/bill/#{@action}")}
+
+  .control
+    .label
+      %label{for: 'category'} Category
+    .input
+      %select#category{name: 'category_id'}
+        = Category.all(fields: [:id, :name]).each do |cat|
+          %option{value: cat.id, selected: (cat.id == @bill.category_id)}= cat.name
+
+  .control
+    .label
+      %label{for: 'period'} Period
+    .input
+      %input#period{type: 'text', name: 'period',  value: @bill.period}/
+
+  .control
+    .label
+      %label{for: 'meter'} Meter
+    .input
+      %input#meter{type: 'number', name: 'meter', step: 'any', min: 0, value: @bill.meter}/
+
+  .control
+    .label
+      %label{for: 'cost'} Cost
+    .input
+      %input#cost{type: 'number', name: 'cost', step: 'any', min: 0, value: @bill.cost}/
+
+  .control
+    .label
+      %label{for: 'category'} Cost
+    .input
+      %input#date{type: 'text', name: 'date', value: @bill.date}/

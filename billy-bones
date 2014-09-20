@@ -6,11 +6,30 @@ require 'sinatra' # Has to be here for traditional approach
 require 'config'
 require 'helpers'
 
+# Bills
+
 get '/' do
-  # Doesn't load additional attributes otherwise
   @bills = Bill.all(order: [:date.desc])
   haml :bills
 end
+
+get '/bills/new' do
+  @bill = Bill.new
+  @action = 'new'
+  haml :bill_new do
+    haml :_bill_form
+  end
+end
+
+get '/bills/:id/edit' do
+  @bill = Bill.get(params[:id])
+  @action = "#{@bill.id}"
+  haml :bill_edit do
+    haml :_bill_form
+  end
+end
+
+#Categories
 
 get '/category/new' do
   @category = Category.new
@@ -47,4 +66,3 @@ get '/category/:id/edit' do |cat_id|
     haml :_category_form
   end
 end
-
