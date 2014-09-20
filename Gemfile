@@ -10,6 +10,7 @@ group :development do
   gem 'pry'
   gem 'rubocop'
   gem 'ruby-lint'
+  gem 'rerun'
 end
 
 group :test do

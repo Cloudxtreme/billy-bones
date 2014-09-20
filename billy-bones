@@ -4,6 +4,7 @@ $LOAD_PATH << 'lib'
 
 require 'sinatra' # Has to be here for traditional approach
 require 'config'
+require 'helpers'
 
 get '/' do
   # Doesn't load additional attributes otherwise
@@ -19,23 +20,15 @@ get '/category/new' do
   end
 end
 
-def update_category_params(category, params)
-  params.each do |key, value|
-    category.attribute_set key, value
-  end
-end
-
 post '/category/new' do
   @category = Category.new
-  update_category_params(@category, params)
-  @category.save
+  Helpers.update_params(@category, params)
   redirect to("/category/#{@category.id}")
 end
 
 post '/category/:id' do |cat_id|
   @category = Category.get(cat_id)
-  update_category_params(@category, params)
-  @category.save
+  Helpers.update_params(@category, params)
   redirect to("/category/#{@category.id}")
 end
 
