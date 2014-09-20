@@ -6,7 +6,7 @@
     .input
       %select#category{name: 'category_id'}
         = Category.all(fields: [:id, :name]).each do |cat|
-          %option{value: cat.id, selected: (cat.id == @bill.category_id)}= cat.name
+          %option{value: cat.id, selected: (cat.id == @cat_id)}= cat.name
 
   .control
     .label

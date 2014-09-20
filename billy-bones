@@ -15,6 +15,7 @@ end
 
 get '/bills/new' do
   @bill = Bill.new
+  @cat_id = (params[:category].to_i) || 0
   @action = 'new'
   haml :bill_new do
     haml :_bill_form
@@ -23,6 +24,7 @@ end
 
 get '/bills/:id/edit' do
   @bill = Bill.get(params[:id])
+  @cat_id = @bill.category.id
   @action = "#{@bill.id}"
   haml :bill_edit do
     haml :_bill_form
