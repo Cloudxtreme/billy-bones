@@ -1,4 +1,4 @@
-%form{action: url("/bill/#{@action}")}
+%form{action: url("/bills/#{@action}"), method: 'post'}
 
   .control
     .label
@@ -28,6 +28,9 @@
 
   .control
     .label
-      %label{for: 'category'} Cost
+      %label{for: 'date'} Date
     .input
       %input#date{type: 'text', name: 'date', value: @bill.date}/
+
+  .control
+    %input#submit{type: 'submit'}
