@@ -3,3 +3,4 @@
 -# Rendering the bills
 = yield
 %a{href: url("/category/#{@category.id}/edit")} Edit
+%a{href: url("/bills/new?category=#{@category.id}")} New bill
