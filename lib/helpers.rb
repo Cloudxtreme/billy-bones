@@ -3,8 +3,7 @@ module Helpers
   class << self
 
     def update_params(model, params)
-      params.each do |key, value|
-        if value == '' then value = nil end
+      params.except{|_, v| v.blank?}.each do |key, value|
         model.attribute_set key, value
       end
       model.save
