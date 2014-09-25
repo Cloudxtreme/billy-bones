@@ -7,8 +7,8 @@ class Bill
   property :id, Serial
   property :meter, Float
   property :cost, Float
-  property :date, Date
-  property :period, Date
+  property :date, Date, required: true
+  property :period, Date, required: true
 
   belongs_to :category
 
