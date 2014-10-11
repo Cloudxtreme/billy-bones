@@ -10,7 +10,7 @@ require 'logger'
 configure :production do
   DataMapper::Logger.new('db.log', :info)
   DataMapper.setup(:default,
-    'postgres://billy-bones:billy@localhost/billy-bones')
+                   'postgres://billy-bones:billy@localhost/billy-bones')
   DataMapper.finalize
   Environment.logger = Logger.new('app.log', :info)
 end
@@ -18,7 +18,7 @@ end
 configure :development do
   DataMapper::Logger.new($stderr, :debug)
   DataMapper.setup(:default,
-    'postgres://billy-bones:billy@localhost/billy-bones-dev')
+                   'postgres://billy-bones:billy@localhost/billy-bones-dev')
   DataMapper.finalize
   DataMapper.auto_upgrade!
   Environment.logger = Logger.new($stderr, :debug)
@@ -28,7 +28,7 @@ configure :test do
   require 'dm_migrations'
   DataMapper::Logger.new($stderr, :debug)
   DataMapper.setup(:default,
-    'postgres://billy-bones:billy@localhost/billy-bones-test')
+                   'postgres://billy-bones:billy@localhost/billy-bones-test')
   DataMapper.finalize
   DataMapper.auto_migrate!
   Environment.logger = Logger.new($stderr, :debug)

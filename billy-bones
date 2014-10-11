@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop:disable Style/FileName
 # Put launch code here
 $LOAD_PATH << 'lib'
 
@@ -44,7 +45,7 @@ post '/bills/:id' do |bill_id|
   redirect to("/category/#{@bill.category_id}")
 end
 
-#Categories
+# Categories
 
 get '/category/new' do
   @category = Category.new
@@ -81,3 +82,4 @@ get '/category/:id/edit' do |cat_id|
     haml :_category_form
   end
 end
+# rubocop:enable Style/FileName

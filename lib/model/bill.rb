@@ -1,6 +1,6 @@
-#encoding: utf-8
 require 'data_mapper'
 
+# A model class representing the bills
 class Bill
   include DataMapper::Resource
 
@@ -11,5 +11,4 @@ class Bill
   property :period, Date, required: true
 
   belongs_to :category
-
 end

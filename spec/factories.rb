@@ -9,18 +9,19 @@ FactoryGirl.define do
     end
 
     trait :with_cost do
-    cost Faker::Commerce.price
+      cost Faker::Commerce.price
     end
 
     trait :with_date do
-    date Date.today
+      date Date.today
     end
 
     trait :with_period do
-    period Date.today
+      period Date.today
     end
 
-    factory :filled_bill, traits: [:with_meter, :with_cost, :with_date, :with_period]
+    factory :filled_bill,
+            traits: [:with_meter, :with_cost, :with_date, :with_period]
 
   end
 end

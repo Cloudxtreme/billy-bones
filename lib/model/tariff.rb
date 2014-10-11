@@ -1,5 +1,6 @@
 require 'data_mapper'
 
+# A model class representing tariffs
 class Tariff
   include DataMapper::Resource
 
@@ -8,5 +9,4 @@ class Tariff
   property :price, Float, required: true
 
   belongs_to :category
-
 end
